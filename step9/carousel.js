@@ -194,5 +194,4 @@ function Carousel(carousel,options){
 
 
 
-
 }
