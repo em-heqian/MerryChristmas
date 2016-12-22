@@ -9,7 +9,7 @@ $(function() {
     //构建雪球的数量
     var snowNumber = 50;
 
-    function snow(){
+    function Snow(){
         this.radius = randomInRange(3, 10);
         //初始的x位置
         this.x = (Math.random() * width);
@@ -20,8 +20,35 @@ $(function() {
         this.render();
     }
 
-    randomInRange(){
-        
+    /**
+     * 绘制雪球
+     * @param  {[type]} canvasContext [description]
+     * @return {[type]}               [description]
+     */
+    Snow.prototype.render = function(){
+         //清除路径
+        //开始一个画布中的一条新路径（或者子路径的一个集合）
+        canvasContext.beginPath();
+
+        canvasContext.fillStyle = "rgba(255,255,255," + this.alpha+")";
+         //一个中心点和半径，为一个画布的当前子路径添加一条弧线
+        //坐标，圆，沿着圆指定弧的开始点和结束点的一个角度
+        //弧沿着圆周的逆时针方向（TRUE）还是顺时针方向（FALSE）遍历
+        canvasContext.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+        //关闭子路径
+        canvasContext.closePath();
+        //fill() 方法使用 fillStyle 属性所指定的颜色、渐变和模式来填充当前路径
+        canvasContext.fill();
+    }
+
+    function randomInRange(minValue,maxValue) {
+        var random = Math.random()*(maxValue - minValue) + minValue;
+        return random;
+    }
+
+    //构建雪球
+    for (var i = 0; i < snowNumber; ++i) {
+        new Snow();
     }
 
 })
