@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣诞主题</title>
+    <style>
+        .bird {
+            min-width: 91px;
+            min-height:71px;
+            position: absolute;
+            top:10%;
+            z-index: 10;
+            background: url(http://img.mukewang.com/55ade1700001b38302730071.png)
+        }
+
+        .birdFly{
+            animation: bird-slow 400px steps(1,start) infinite;
+            -webkit-animation: bird-slow 400px steps(1,start) infinite;
+
+            /*写法2*/
+            -webkit-animation-name: bird-slow;
+            -webkit-animation-duration: 400ms;
+            -webkit-animation-timing-function: steps(3,start);
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        @keyframes bird-slow{
+            0% {background-position-x : -0px}
+            100% {background-position-x: -273px}
+        }
+    </style>
+</head>
+<body>
+    steps(3)实现帧动画
+    <div class="bird birdFly"></div>
+</body>
+</html>
